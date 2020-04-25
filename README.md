@@ -1,0 +1,2 @@
+# console
+Admin console application
