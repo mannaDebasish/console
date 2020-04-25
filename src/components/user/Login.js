@@ -6,6 +6,7 @@ import { TextInput, Toast } from 'react-materialize';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
+import Icon from '@material-ui/core/Icon';
 
 class Login extends Component {
 
@@ -41,7 +42,8 @@ class Login extends Component {
     render() {
         return (
             <div className="user-login">
-                <h4>Login</h4>
+                <p><Icon color="default" style={{ fontSize: 30, color: "white" }}>lock_circle</Icon></p>
+                <h4>Sign In</h4>
                 <form onSubmit={this.handleSubmit}>
                     <TextInput
                         id="TextInput-4"
