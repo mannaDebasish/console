@@ -5,6 +5,34 @@
     margin: 0 auto;
 }
 
+/* job search */
+
+.job-search {
+    width: 70%;
+    margin: 30px auto;
+    padding-top: 10px;
+    box-shadow: 0 0 10px #e5e5e5;
+    padding: 20px;
+}
+.job-item {
+    padding: 0px 20px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+}
+.job-item h4 {
+    font-size: 17px;
+    margin-top: 13px;
+}
+.complete-job {
+    border-left: 3px solid green;
+}
+.progress-job {
+    border-left: 3px solid #1976D2;
+}
+.incomplete-job {
+    border-left: 3px solid red;
+}
+
 /* JOB Header */
 
 .job-header {
