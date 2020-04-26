@@ -9,7 +9,7 @@
 
 .job-search {
     width: 70%;
-    margin: 30px auto;
+    margin: 90px auto 30px;
     padding-top: 10px;
     box-shadow: 0 0 10px #e5e5e5;
     padding: 20px;
@@ -37,10 +37,10 @@
 
 .job-header {
     box-shadow: 0 0 10px #e5e5e5;
-    margin-top: 15px;
+    margin-top: 90px;
 }
 .user-name {
-    border-bottom: 2px solid #1976D2;
+    border-bottom: 2px solid #26A69A;
     padding: 20px 10px 10px;
 }
 .user-name > h3 {

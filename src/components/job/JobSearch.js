@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css';
 import './job.css';
 import { TextInput, Row, Col } from 'react-materialize';
+import Header from '../header/Header';
 
 class JobSearch extends Component {
 
@@ -47,25 +48,29 @@ class JobSearch extends Component {
     render() {
         const { jobs } = this.state;
         return (
-            <div className="job-search">
-                <div>
-                    <TextInput
-                        icon="search"
-                        id="TextInput-4"
-                        label="Search job"
-                        onChange={this.handleInputChange}
-                    />
+            <div>
+                <Header />
+                <div className="job-search">
+                    <div>
+                        <TextInput
+                            icon="search"
+                            id="TextInput-4"
+                            label="Search job"
+                            onChange={this.handleInputChange}
+                        />
+
+                    </div>
+                    {
+                        this.state.jobs.map((job, index) => {
+                            return (<div waves="light" className={job.status === 'Completed' ? "job-item complete-job" : (job.status === 'Incomplete' ? 'job-item incomplete-job' : 'job-item progress-job')} key={index}>
+                                <h4>{job.name} ~ {job.inCharge}</h4>
+                            </div>)
+                        })
+                    }
 
                 </div>
-                {
-                    this.state.jobs.map((job, index) => {
-                        return (<div waves="light" className={job.status === 'Completed' ? "job-item complete-job" : (job.status === 'Incomplete' ? 'job-item incomplete-job' : 'job-item progress-job')} key={index}>
-                            <h4>{job.name} ~ {job.inCharge}</h4>
-                        </div>)
-                    })
-                }
-
             </div>
+
         )
     }
 }
