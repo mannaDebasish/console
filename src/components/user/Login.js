@@ -28,7 +28,7 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.username && this.state.password) {
-            console.log(111, this.props)
+            console.log(111, this.props);
 
         } else {
             this.setState({ error: true, errorText: 'Please enter username and password' });
@@ -42,7 +42,7 @@ class Login extends Component {
     render() {
         return (
             <div className="user-login">
-                <p><Icon color="default" style={{ fontSize: 30, color: "white" }}>lock_circle</Icon></p>
+                <p><Icon style={{ fontSize: 30, color: "white" }}>lock_circle</Icon></p>
                 <h4>Sign In</h4>
                 <form onSubmit={this.handleSubmit}>
                     <TextInput
