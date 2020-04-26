@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import Posts from './Posts';
 import Login from './user/Login';
-import JobHeader from './job/JobHeader';
+import JobSearch from './job/JobSearch';
 import Postform from './Postform';
 import './App.css';
 import '../materialize/materialize.min.css';
@@ -19,7 +19,7 @@ export default class App extends Component {
             <Postform />
           </Route>
           <Route path="/">
-            <JobHeader />
+            <JobSearch />
           </Route>
         </BrowserRouter>
       </Provider>
