@@ -1,0 +1,21 @@
+/* Job Page */
+
+.job-page {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* JOB Header */
+
+.job-header {
+    box-shadow: 0 0 10px #e5e5e5;
+    margin-top: 15px;
+}
+.user-name {
+    border-bottom: 2px solid #1976D2;
+    padding: 20px 10px 10px;
+}
+.user-name > h3 {
+    font-size: 25px;
+    margin-top: 0px;
+}

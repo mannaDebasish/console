@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 //import 'materialize-css';
 import './job.css';
 import { Col, Nav, Row, Tab } from 'react-bootstrap';
-import Login from '../user/Login';
+import JobHeader from './JobHeader';
 import Postform from '../Postform';
 class JobPage extends Component {
     constructor(props) {
@@ -24,6 +24,9 @@ class JobPage extends Component {
         console.log(111, tabKey);
         return (
             <div className="job-page">
+
+                <JobHeader />
+
 
                 <Tab.Container id="left-tabs-example" defaultActiveKey={tabKey} activeKey={tabKey} onSelect={this.handleTabSelect}>
                     <Row>
