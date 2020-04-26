@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css';
 import './job.css';
 import { Row, Col, Card, Icon } from 'react-materialize';
+import JobPage from './JobPage';
 
 class JobHeader extends Component {
 
@@ -36,25 +37,7 @@ class JobHeader extends Component {
                             <p>ICA</p>
                         </Col>
                     </Row>
-
                 </div>
-
-                {/* <Row>
-                    <Col m={12} s={12}>
-                        <Card
-                            className="darken-1"
-                            closeIcon={<Icon>close</Icon>}
-                            revealIcon={<Icon>more_vert</Icon>}
-                            textClassName="black-text"
-                            title="Card title"
-                            actions={[
-                                <h5>User name</h5>
-                            ]}
-                        >
-                            I am a very simple card.
-                        </Card>
-                    </Col>
-                </Row> */}
             </div>
         )
     }

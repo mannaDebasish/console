@@ -18,6 +18,7 @@
     padding: 0px 20px;
     border: 1px solid #e5e5e5;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .job-item h4 {
     font-size: 17px;
@@ -37,7 +38,8 @@
 
 .job-header {
     box-shadow: 0 0 10px #e5e5e5;
-    margin-top: 90px;
+    padding-top: 90px;
+    padding-bottom: 10px;
 }
 .user-name {
     border-bottom: 2px solid #26A69A;

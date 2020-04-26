@@ -3,59 +3,119 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 //import 'materialize-css';
 import './job.css';
-import { Col, Nav, Row, Tab } from 'react-bootstrap';
-import JobHeader from './JobHeader';
+import { makeStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { stages } from '../../constant/stages';
 import Header from '../header/Header';
+import JobHeader from './JobHeader';
 
-class JobPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tabKey: 'first'
-        }
-        this.handleTabSelect = this.handleTabSelect.bind(this);
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
 
-    }
-    handleTabSelect(tabKey) {
-        this.setState({ tabKey })
-    }
+    return (
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box p={3}>{children}</Box>}
+        </Typography>
+    );
+}
 
-    render() {
-        const { tabKey } = this.state;
-        console.log(111, tabKey);
-        return (
-            <div>
-                <Header />
-                <div className="job-page">
-                    <JobHeader />
-                    <Tab.Container id="left-tabs-example" defaultActiveKey={tabKey} activeKey={tabKey} onSelect={this.handleTabSelect}>
-                        <Row>
-                            <Col sm={3}>
-                                <Nav variant="pills" className="flex-column">
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
-                            </Col>
-                            <Col sm={9}>
-                                <Tab.Content>
-                                    <Tab.Pane eventKey="first">
-                                        test 1
-                                </Tab.Pane>
-                                    <Tab.Pane eventKey="second">
-                                        test 2
-                                </Tab.Pane>
-                                </Tab.Content>
-                            </Col>
-                        </Row>
-                    </Tab.Container>
-                </div>
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `vertical-tab-${index}`,
+        'aria-controls': `vertical-tabpanel-${index}`,
+    };
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+        display: 'flex'
+    },
+    tabs: {
+        borderRight: `1px solid ${theme.palette.divider}`,
+    },
+}));
+
+function JobPage() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    return (
+        <div>
+            <JobHeader />
+            <div className={classes.root}>
+                <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    className={classes.tabs}
+                >
+                    {
+                        stages.map((stage, index) => {
+                            return (<Tab label={stage} {...a11yProps(index)} />)
+                        })
+                    }
+
+                </Tabs>
+                <TabPanel value={value} index={0}>
+                    ICA
+            </TabPanel>
+                <TabPanel value={value} index={1}>
+                    FE ESTIMATE
+            </TabPanel>
+                <TabPanel value={value} index={2}>
+                    FILE INSURANCE CLAIM
+            </TabPanel>
+                <TabPanel value={value} index={3}>
+                    INSURANCE INSPECTION
+            </TabPanel>
+                <TabPanel value={value} index={4}>
+                    FE CONTRACT
+            </TabPanel>
+                <TabPanel value={value} index={5}>
+                    SUBMIT TO INSURANCE
+            </TabPanel>
+                <TabPanel value={value} index={6}>
+                    INSURANCE APPROVAL
+            </TabPanel>
+                <TabPanel value={value} index={7}>
+                    ORDER MATERIALS
+            </TabPanel>
+                <TabPanel value={value} index={8}>
+                    TRADE COMPLETION
+            </TabPanel>
+                <TabPanel value={value} index={9}>
+                    SUPPLEMENT
+            </TabPanel>
+                <TabPanel value={value} index={10}>
+                    FINAL INVOICE
+            </TabPanel>
             </div>
-        )
-    }
+        </div>
+    );
 }
 
 const mapStateToProps = state => ({

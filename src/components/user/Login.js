@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
 import Icon from '@material-ui/core/Icon';
+import { browserHistory } from "react-router";
 
 class Login extends Component {
 
@@ -28,15 +29,11 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.username && this.state.password) {
-            console.log(111, this.props);
+            this.props.history.push('/home');
 
         } else {
             this.setState({ error: true, errorText: 'Please enter username and password' });
         }
-        var self = this;
-        setTimeout(function () {
-            self.setState({ error: false, errorText: '' });
-        }, 3000);
     }
 
     render() {

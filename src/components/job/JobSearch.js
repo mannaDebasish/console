@@ -7,6 +7,7 @@ import Header from '../header/Header';
 
 class JobSearch extends Component {
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -29,8 +30,13 @@ class JobSearch extends Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onJobSelect = this.onJobSelect.bind(this);
     }
 
+    onJobSelect(event) {
+        const a = event.target.innerText;
+        this.props.history.push('/jobDetails');
+    }
     handleInputChange(event) {
         const { value } = event.target;
         const updatedList = this.state.tempJobs.filter(function (item) {
@@ -46,7 +52,7 @@ class JobSearch extends Component {
     }
 
     render() {
-        const { jobs } = this.state;
+        const { jobs, jobSearch, jobSearchResult } = this.state;
         return (
             <div>
                 <Header />
@@ -62,7 +68,11 @@ class JobSearch extends Component {
                     </div>
                     {
                         this.state.jobs.map((job, index) => {
-                            return (<div waves="light" className={job.status === 'Completed' ? "job-item complete-job" : (job.status === 'Incomplete' ? 'job-item incomplete-job' : 'job-item progress-job')} key={index}>
+                            return (<div
+                                waves="light"
+                                className={job.status === 'Completed' ? "job-item complete-job" : (job.status === 'Incomplete' ? 'job-item incomplete-job' : 'job-item progress-job')}
+                                key={index}
+                                onClick={this.onJobSelect}>
                                 <h4>{job.name} ~ {job.inCharge}</h4>
                             </div>)
                         })
