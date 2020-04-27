@@ -34,6 +34,10 @@ class Login extends Component {
         } else {
             this.setState({ error: true, errorText: 'Please enter username and password' });
         }
+        var self = this;
+        setTimeout(function () {
+            self.setState({ error: false, errorText: '' });
+        }, 3000);
     }
 
     render() {

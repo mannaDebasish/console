@@ -12,20 +12,20 @@ class JobSearch extends Component {
         super(props);
         this.state = {
             jobs: [
-                { id: '1', name: 'ICA', status: 'Completed', customer: 'Deb', inCharge: 'Deb' },
-                { id: '1', name: 'FE Contract', status: 'Completed', customer: 'Deb', inCharge: 'Sourav' },
-                { id: '1', name: 'Submit to insurance', status: 'Onprogress', customer: 'Deb', inCharge: 'Deb' },
-                { id: '1', name: 'Insurance Approval', status: 'Incomplete', customer: 'Sourav', inCharge: 'Sourav' },
-                { id: '1', name: 'Order materials', status: 'Incomplete', customer: 'Deb', inCharge: 'Deb' },
-                { id: '1', name: 'Trade Completion', status: 'Completed', customer: 'Sourav', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 1', status: 'Completed', customer: 'Deb', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 2', status: 'Completed', customer: 'Deb', inCharge: 'Sourav' },
+                { id: '1', name: 'Job name 3', status: 'Onprogress', customer: 'Deb', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 4', status: 'Incomplete', customer: 'Sourav', inCharge: 'Sourav' },
+                { id: '1', name: 'Job name 5', status: 'Incomplete', customer: 'Deb', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 6', status: 'Completed', customer: 'Sourav', inCharge: 'Deb' },
             ],
             tempJobs: [
-                { id: '1', name: 'ICA', status: 'Completed', customer: 'Deb', inCharge: 'Deb' },
-                { id: '1', name: 'FE Contract', status: 'Completed', customer: 'Deb', inCharge: 'Sourav' },
-                { id: '1', name: 'Submit to insurance', status: 'Onprogress', customer: 'Deb', inCharge: 'Deb' },
-                { id: '1', name: 'Insurance Approval', status: 'Incomplete', customer: 'Sourav', inCharge: 'Sourav' },
-                { id: '1', name: 'Order materials', status: 'Incomplete', customer: 'Deb', inCharge: 'Deb' },
-                { id: '1', name: 'Trade Completion', status: 'Completed', customer: 'Sourav', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 1', status: 'Completed', customer: 'Deb', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 2', status: 'Completed', customer: 'Deb', inCharge: 'Sourav' },
+                { id: '1', name: 'Job name 3', status: 'Onprogress', customer: 'Deb', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 4', status: 'Incomplete', customer: 'Sourav', inCharge: 'Sourav' },
+                { id: '1', name: 'Job name 5', status: 'Incomplete', customer: 'Deb', inCharge: 'Deb' },
+                { id: '1', name: 'Job name 6', status: 'Completed', customer: 'Sourav', inCharge: 'Deb' },
             ]
         }
         this.handleInputChange = this.handleInputChange.bind(this);

@@ -64,14 +64,14 @@ function JobPage() {
     return (
         <div>
             <JobHeader />
-            <div className={classes.root}>
+            <div className={classes.root + ' tab-container'}>
                 <Tabs
                     orientation="vertical"
                     variant="scrollable"
                     value={value}
                     onChange={handleChange}
                     aria-label="Vertical tabs example"
-                    className={classes.tabs}
+                    className={classes.tabs + ' tab-links'}
                 >
                     {
                         stages.map((stage, index) => {
@@ -80,39 +80,41 @@ function JobPage() {
                     }
 
                 </Tabs>
-                <TabPanel value={value} index={0}>
-                    ICA
-            </TabPanel>
-                <TabPanel value={value} index={1}>
-                    FE ESTIMATE
-            </TabPanel>
-                <TabPanel value={value} index={2}>
-                    FILE INSURANCE CLAIM
-            </TabPanel>
-                <TabPanel value={value} index={3}>
-                    INSURANCE INSPECTION
-            </TabPanel>
-                <TabPanel value={value} index={4}>
-                    FE CONTRACT
-            </TabPanel>
-                <TabPanel value={value} index={5}>
-                    SUBMIT TO INSURANCE
-            </TabPanel>
-                <TabPanel value={value} index={6}>
-                    INSURANCE APPROVAL
-            </TabPanel>
-                <TabPanel value={value} index={7}>
-                    ORDER MATERIALS
-            </TabPanel>
-                <TabPanel value={value} index={8}>
-                    TRADE COMPLETION
-            </TabPanel>
-                <TabPanel value={value} index={9}>
-                    SUPPLEMENT
-            </TabPanel>
-                <TabPanel value={value} index={10}>
-                    FINAL INVOICE
-            </TabPanel>
+                <div className="tab-contents">
+                    <TabPanel value={value} index={0}>
+                        ICA
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        FE ESTIMATE
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        FILE INSURANCE CLAIM
+                    </TabPanel>
+                    <TabPanel value={value} index={3}>
+                        INSURANCE INSPECTION
+                    </TabPanel>
+                    <TabPanel value={value} index={4}>
+                        FE CONTRACT
+                    </TabPanel>
+                    <TabPanel value={value} index={5}>
+                        SUBMIT TO INSURANCE
+                    </TabPanel>
+                    <TabPanel value={value} index={6}>
+                        INSURANCE APPROVAL
+                    </TabPanel>
+                    <TabPanel value={value} index={7}>
+                        ORDER MATERIALS
+                    </TabPanel>
+                    <TabPanel value={value} index={8}>
+                        TRADE COMPLETION
+                    </TabPanel>
+                    <TabPanel value={value} index={9}>
+                        SUPPLEMENT
+                    </TabPanel>
+                    <TabPanel value={value} index={10}>
+                        FINAL INVOICE
+                    </TabPanel>
+                </div>
             </div>
         </div>
     );
