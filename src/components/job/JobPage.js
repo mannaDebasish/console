@@ -12,6 +12,7 @@ import { stages } from '../../constant/stages';
 import Header from '../header/Header';
 import JobHeader from './JobHeader';
 import FEEstimatePage from './FEEstimatePage';
+import ICA from './status/Ica'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -83,7 +84,7 @@ function JobPage() {
                 </Tabs>
                 <div className="tab-contents">
                     <TabPanel value={value} index={0}>
-                        ICA
+                        <ICA />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         <FEEstimatePage />

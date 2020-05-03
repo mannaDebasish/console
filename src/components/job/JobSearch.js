@@ -4,6 +4,7 @@ import 'materialize-css';
 import './job.css';
 import { TextInput, Row, Col } from 'react-materialize';
 import Header from '../header/Header';
+import { fetchJob } from '../../actions/icaAction';
 
 class JobSearch extends Component {
 
@@ -32,10 +33,15 @@ class JobSearch extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onJobSelect = this.onJobSelect.bind(this);
     }
-
+    componentWillReceiveProps(nextProps) {
+        if (this.props.job != nextProps.job) {
+            this.props.history.push('/jobDetails?id=' + nextProps.job._id);
+        }
+    }
     onJobSelect(event) {
         const a = event.target.innerText;
-        this.props.history.push('/jobDetails');
+        this.props.fetchJob(event.target.innerText);
+        //this.props.history.push('/jobDetails');
     }
     handleInputChange(event) {
         const { value } = event.target;
@@ -85,12 +91,15 @@ class JobSearch extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-
-});
+const mapStateToProps = state => {
+    console.log('hhd', state);
+    return {
+        job: state.job
+    };
+}
 
 const mapDispatchToProps = {
-
+    fetchJob
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobSearch);
