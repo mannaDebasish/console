@@ -29,6 +29,7 @@ class Login extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.username && this.state.password) {
+
             this.props.history.push('/home');
 
         } else {

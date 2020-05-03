@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import { stages } from '../../constant/stages';
 import Header from '../header/Header';
 import JobHeader from './JobHeader';
+import FEEstimatePage from './FEEstimatePage';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -75,7 +76,7 @@ function JobPage() {
                 >
                     {
                         stages.map((stage, index) => {
-                            return (<Tab label={stage} {...a11yProps(index)} />)
+                            return (<Tab key={index} label={stage} {...a11yProps(index)} />)
                         })
                     }
 
@@ -85,7 +86,7 @@ function JobPage() {
                         ICA
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        FE ESTIMATE
+                        <FEEstimatePage />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                         FILE INSURANCE CLAIM
