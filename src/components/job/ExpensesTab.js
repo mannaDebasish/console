@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css';
 import './job.css';
 import { i18n } from '../../constant/stages';
-import { Row, Col, TextInput, Textarea, Icon, Button, DatePicker } from 'react-materialize';
+import { Row, Col, TextInput, Textarea, Icon, Button, DatePicker, Select } from 'react-materialize';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import JobPage from './JobPage';
@@ -35,6 +35,13 @@ class ExpensesTab extends Component {
                     paidDate: 'May 10, 2020',
                     note: 'Paid by credit card'
                 }
+            ],
+            contractors: [
+                { name: 'contractor 1', id: 'contractor 1' },
+                { name: 'contractor 2', id: 'contractor 2' },
+                { name: 'contractor 3', id: 'contractor 3' },
+                { name: 'contractor 4', id: 'contractor 4' },
+                { name: 'contractor 5', id: 'contractor 5' }
             ]
         }
         this.onInputChange = this.onInputChange.bind(this);
@@ -68,7 +75,7 @@ class ExpensesTab extends Component {
     }
 
     render() {
-        const { expenses, showSaveButton } = this.state;
+        const { expenses, showSaveButton, contractors } = this.state;
         return (
             <div className="expense-tab">
                 <div className="expenses-head">Expenses</div>
@@ -120,13 +127,40 @@ class ExpensesTab extends Component {
                                         <Col
                                             className="cost-col"
                                             s={9} >
-                                            <TextInput
+                                            <Select
                                                 id={index}
                                                 placeholder="Contractor Id"
                                                 name="contractorId"
                                                 value={expense.contractorId ? expense.contractorId : ''}
                                                 onChange={this.onInputChange}
-                                            />
+                                                multiple={false}
+                                                options={{
+                                                    classes: '',
+                                                    dropdownOptions: {
+                                                        alignment: 'left',
+                                                        autoTrigger: true,
+                                                        closeOnClick: true,
+                                                        constrainWidth: true,
+                                                        coverTrigger: true,
+                                                        hover: false,
+                                                        inDuration: 150,
+                                                        onCloseEnd: null,
+                                                        onCloseStart: null,
+                                                        onOpenEnd: null,
+                                                        onOpenStart: null,
+                                                        outDuration: 250
+                                                    }
+                                                }}
+
+                                            >
+                                                {
+                                                    contractors.map((person, index) => {
+                                                        return (
+                                                            <option value={person.id}>{person.name}</option>
+                                                        )
+                                                    })
+                                                }
+                                            </Select>
                                         </Col>
                                     </Row>
                                     <Row className="expense-row">

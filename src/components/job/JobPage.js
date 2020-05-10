@@ -14,6 +14,7 @@ import JobHeader from './JobHeader';
 import FEEstimateTab from './FEEstimateTab';
 import ICA from './status/Ica';
 import ExpensesTab from './ExpensesTab';
+import FileInsuranceClaimTab from './FileInsuranceClaimTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -94,7 +95,7 @@ function JobPage() {
                         <ExpensesTab />
                     </TabPanel>
                     <TabPanel value={value} index={3}>
-                        FILE INSURANCE CLAIM
+                        <FileInsuranceClaimTab />
                     </TabPanel>
                     <TabPanel value={value} index={4}>
                         INSURANCE INSPECTION

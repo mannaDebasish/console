@@ -137,3 +137,12 @@
     font-size: 15px;
     margin-top: 20px;
 }
+/* ============= Claim Insurance ============ */
+.file-ins-head {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.save-file-ins-button {
+    float: right;
+}
