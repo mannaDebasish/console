@@ -11,8 +11,9 @@ import Box from '@material-ui/core/Box';
 import { stages } from '../../constant/stages';
 import Header from '../header/Header';
 import JobHeader from './JobHeader';
-import FEEstimatePage from './FEEstimatePage';
-import ICA from './status/Ica'
+import FEEstimateTab from './FEEstimateTab';
+import ICA from './status/Ica';
+import ExpensesTab from './ExpensesTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -87,33 +88,36 @@ function JobPage() {
                         <ICA />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <FEEstimatePage />
+                        <FEEstimateTab />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        FILE INSURANCE CLAIM
+                        <ExpensesTab />
                     </TabPanel>
                     <TabPanel value={value} index={3}>
-                        INSURANCE INSPECTION
+                        FILE INSURANCE CLAIM
                     </TabPanel>
                     <TabPanel value={value} index={4}>
-                        FE CONTRACT
+                        INSURANCE INSPECTION
                     </TabPanel>
                     <TabPanel value={value} index={5}>
-                        SUBMIT TO INSURANCE
+                        FE CONTRACT
                     </TabPanel>
                     <TabPanel value={value} index={6}>
-                        INSURANCE APPROVAL
+                        SUBMIT TO INSURANCE
                     </TabPanel>
                     <TabPanel value={value} index={7}>
-                        ORDER MATERIALS
+                        INSURANCE APPROVAL
                     </TabPanel>
                     <TabPanel value={value} index={8}>
-                        TRADE COMPLETION
+                        ORDER MATERIALS
                     </TabPanel>
                     <TabPanel value={value} index={9}>
-                        SUPPLEMENT
+                        TRADE COMPLETION
                     </TabPanel>
                     <TabPanel value={value} index={10}>
+                        SUPPLEMENT
+                    </TabPanel>
+                    <TabPanel value={value} index={11}>
                         FINAL INVOICE
                     </TabPanel>
                 </div>

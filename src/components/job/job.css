@@ -69,6 +69,11 @@
 }
 
 /* ================== Estimate ============= */
+.confirm-button {
+    position: absolute !important;
+    right: 235px;
+    margin-top: -48px;
+}
 .pdf-button{
     float: right;
     margin-top: -50px;
@@ -87,4 +92,48 @@
 .cost-col > .input-field{
     width: 97%;
     margin: 0;
+}
+
+/* ==================== Expenses ================ */
+.add-exp-btn-icon {
+    margin-top: 3px;
+    margin-right: 9px !important;
+}
+.expanse-btn-list {
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: -60px;
+    margin-right: -6px;
+}
+.delete-expense {
+    text-align: right;
+    width: 50px;
+    float: right;
+    padding: 7px 0px;
+    cursor: pointer;
+}
+.delete-expense > svg {
+    color: #F24C3D;
+    width: 50px;
+    height: 30px;    
+}
+.expense-item {
+    box-shadow: 0 0 10px #e5e5e5;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.expenses-head {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.expense-row{
+    margin-bottom: 5px !important;
+    width: 95%;
+    margin-left: 0px !important;
+}
+.expense-label-col {
+    font-size: 15px;
+    margin-top: 20px;
 }

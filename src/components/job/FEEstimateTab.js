@@ -61,6 +61,16 @@ class FEEstimatePage extends Component {
             <div className="fe-estimate">
                 <div className="estimate-header">
                     <h5>Estimate:</h5>
+                    <Button
+                        className="confirm-button"
+                        node="button"
+                        style={{
+                            marginRight: '5px'
+                        }}
+                        waves="light"
+                    >
+                        Confirm
+                        </Button>
                     <Pdf targetRef={ref} filename="estimate.pdf">
                         {({ toPdf }) => <Button
                             className="pdf-button"
