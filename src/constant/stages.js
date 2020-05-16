@@ -12,6 +12,11 @@ export const stages = [
     'SUPPLEMENT',
     'FINAL INVOICE'];
 
+export const adminTab = [
+    'PAY EXPENSES',
+    'ADD NEW CONTRACTOR'
+];
+
 export const i18n = {
     cancel: 'Cancel',
     clear: 'Clear',

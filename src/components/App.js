@@ -7,7 +7,7 @@ import './App.css';
 import '../materialize/materialize.min.css';
 import '../materialize/materialize.min.js';
 import { BrowserRouter, Route } from 'react-router-dom';
-import JobSearch from './job/JobSearch';
+import AdminPage from './admin/AdminPage';
 import Home from './Home';
 
 export default class App extends Component {
@@ -16,6 +16,7 @@ export default class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Route exact path="/home" component={Home} />
+          <Route exact path="/admin" component={AdminPage} />
           <Route exact path="/" component={Login} />
         </BrowserRouter>
       </Provider>

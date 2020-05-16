@@ -156,7 +156,7 @@ class ExpensesTab extends Component {
                                                 {
                                                     contractors.map((person, index) => {
                                                         return (
-                                                            <option value={person.id}>{person.name}</option>
+                                                            <option key={index} value={person.id}>{person.name}</option>
                                                         )
                                                     })
                                                 }

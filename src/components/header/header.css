@@ -10,6 +10,7 @@
 .left-link {
     width: 100px;
     float: left;
+    display: inline-flex;
 }
 .left-link > svg {
     font-size: 30px;
@@ -18,4 +19,13 @@
     float: right;
     margin-right: 15px;
     margin-top: 5px;
+}
+.header-menu {
+    margin-left: 20px;
+    display: inline-flex;
+}
+.menu-item {
+    width: 65px;
+    text-align: center;
+    cursor: pointer;
 }
