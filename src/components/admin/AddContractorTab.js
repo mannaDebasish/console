@@ -7,6 +7,7 @@ import { Row, Col, TextInput, Textarea, Icon, Button, DatePicker, Select } from 
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import { ListSubheader } from '@material-ui/core';
+import { getAllContractors, createPost } from '../../actions/contractorAction';
 
 const ref = React.createRef();
 
@@ -17,35 +18,45 @@ class AddContractorTab extends Component {
         this.state = {
             showAddContactor: false,
             newContractor: {},
-            contractors: [
-                { name: 'contractor 1', id: 'contractor 1', companyName: 'Company Ltd', companyAddress: '777 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 2', id: 'contractor 2', companyName: 'Company Ltd', companyAddress: '888 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 3', id: 'contractor 3', companyName: 'Company Ltd', companyAddress: '999 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 4', id: 'contractor 4', companyName: 'Company Ltd', companyAddress: '100 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 5', id: 'contractor 5', companyName: 'Company Ltd', companyAddress: '110 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' }
-            ],
-            tempContractors: [
-                { name: 'contractor 1', id: 'contractor 1', companyName: 'Company Ltd', companyAddress: '777 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 2', id: 'contractor 2', companyName: 'Company Ltd', companyAddress: '888 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 3', id: 'contractor 3', companyName: 'Company Ltd', companyAddress: '999 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 4', id: 'contractor 4', companyName: 'Company Ltd', companyAddress: '100 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' },
-                { name: 'contractor 5', id: 'contractor 5', companyName: 'Company Ltd', companyAddress: '110 Brockton Avenue, Abington MA 2351', phone: '222-333-111', email: 'contractor@contract.com' }
-            ]
+            contractors: props.contractors.contractors,
+            tempContractors: props.contractors.contractors
         }
         this.onInputChange = this.onInputChange.bind(this);
         this.addContractor = this.addContractor.bind(this);
         this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
         this.showAddSection = this.showAddSection.bind(this);
     }
+
+    componentDidMount() {
+        this.props.getAllContractors().then((data) => {
+            if (data && data.length > 0) {
+                this.setState({ contractors: data });
+                this.setState({ tempContractors: data });
+            }
+            else {
+                this.setState({ showAddContactor: true });
+            }
+        });
+    }
+
     addContractor() {
-        this.state.newContractor.id = 'contractor ' + (this.state.contractors.length + 1);
-        let newList = [this.state.newContractor, ...this.state.contractors];
-        this.setState({ contractors: newList });
-        this.setState({ tempContractors: newList });
-        this.setState({ showAddContactor: false });
+        if (this.state.newContractor.name && this.state.newContractor.email && this.state.newContractor.phone && this.state.newContractor.company_name && this.state.newContractor.company_address) {
+            this.state.newContractor.type = 'contractor';
+            let newList = this.state.contractors.length > 0 ? [this.state.newContractor, ...this.state.contractors] : [this.state.newContractor];
+            this.setState({ contractors: newList });
+            this.setState({ tempContractors: newList });
+            this.setState({ showAddContactor: false });
+            this.props.createPost(this.state.newContractor).then((data) => {
+                componentDidMount();
+            });
+        } else {
+            alert("Please enter all contractor details")
+        }
+
     }
     showAddSection() {
         this.setState({ showAddContactor: true });
+
     }
     onInputChange(e) {
         const { name, value } = e.target;
@@ -57,7 +68,7 @@ class AddContractorTab extends Component {
             if (item.name.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
-            if (item.id.toLowerCase().search(value.toLowerCase()) !== -1) {
+            if (item._id.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
             if (item.phone.toLowerCase().search(value.toLowerCase()) !== -1) {
@@ -66,10 +77,10 @@ class AddContractorTab extends Component {
             if (item.email.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
-            if (item.companyName.toLowerCase().search(value.toLowerCase()) !== -1) {
+            if (item.company_name.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
-            if (item.companyAddress.toLowerCase().search(value.toLowerCase()) !== -1) {
+            if (item.company_address.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
         });
@@ -84,7 +95,7 @@ class AddContractorTab extends Component {
                     <div className="search-area">
                         <TextInput
                             icon="search"
-                            label="Search job"
+                            label="Search Contractors"
                             className="search-contractor-input"
                             onChange={this.handleSearchInputChange}
                         />
@@ -171,7 +182,7 @@ class AddContractorTab extends Component {
                                 s={9} >
                                 <TextInput
                                     placeholder="Company Name"
-                                    name="companyName"
+                                    name="company_name"
                                     onChange={this.onInputChange}
                                     onBlur={this.onInputChange}
                                 />
@@ -188,8 +199,8 @@ class AddContractorTab extends Component {
                                 s={9} >
                                 <Textarea
                                     placeholder="Company Address"
-                                    name="companyAddress"
-                                    id="companyAddressTextarea"
+                                    name="company_address"
+                                    id="company_addressTextarea"
                                     onChange={this.onInputChange}
                                     onBlur={this.onInputChange}
                                 />
@@ -215,84 +226,85 @@ class AddContractorTab extends Component {
                 }
                 <div className="contactor-list">
                     {
-                        contractors.map((contactor, index) => {
-                            return (
-                                <div className="contactor-item" key={index}>
-                                    <Row className="contractor-row">
-                                        <Col
-                                            className="contractor-label-col"
-                                            s={3} >
-                                            Contractor Id:
+                        contractors && contractors.length > 0 ?
+                            contractors.map((contactor, index) => {
+                                return (
+                                    <div className="contactor-item" key={index}>
+                                        <Row className="contractor-row">
+                                            <Col
+                                                className="contractor-label-col"
+                                                s={3} >
+                                                Contractor Id:
                                         </Col>
-                                        <Col
-                                            className="cost-col"
-                                            s={9} >
-                                            {contactor.id}
+                                            <Col
+                                                className="cost-col"
+                                                s={9} >
+                                                {contactor._id}
+                                            </Col>
+                                        </Row>
+                                        <Row className="contractor-row">
+                                            <Col
+                                                className="contractor-label-col"
+                                                s={3} >
+                                                Contractor Name:
                                         </Col>
-                                    </Row>
-                                    <Row className="contractor-row">
-                                        <Col
-                                            className="contractor-label-col"
-                                            s={3} >
-                                            Contractor Name:
+                                            <Col
+                                                className="cost-col"
+                                                s={9} >
+                                                {contactor.name}
+                                            </Col>
+                                        </Row>
+                                        <Row className="contractor-row">
+                                            <Col
+                                                className="contractor-label-col"
+                                                s={3} >
+                                                Phone Number:
                                         </Col>
-                                        <Col
-                                            className="cost-col"
-                                            s={9} >
-                                            {contactor.name}
+                                            <Col
+                                                className="cost-col"
+                                                s={9} >
+                                                {contactor.phone}
+                                            </Col>
+                                        </Row>
+                                        <Row className="contractor-row">
+                                            <Col
+                                                className="contractor-label-col"
+                                                s={3} >
+                                                Email:
                                         </Col>
-                                    </Row>
-                                    <Row className="contractor-row">
-                                        <Col
-                                            className="contractor-label-col"
-                                            s={3} >
-                                            Phone Number:
+                                            <Col
+                                                className="cost-col"
+                                                s={9} >
+                                                {contactor.email}
+                                            </Col>
+                                        </Row>
+                                        <Row className="contractor-row">
+                                            <Col
+                                                className="contractor-label-col"
+                                                s={3} >
+                                                Company Name:
                                         </Col>
-                                        <Col
-                                            className="cost-col"
-                                            s={9} >
-                                            {contactor.phone}
+                                            <Col
+                                                className="cost-col"
+                                                s={9} >
+                                                {contactor.company_name}
+                                            </Col>
+                                        </Row>
+                                        <Row className="contractor-row">
+                                            <Col
+                                                className="contractor-label-col"
+                                                s={3} >
+                                                Company Address:
                                         </Col>
-                                    </Row>
-                                    <Row className="contractor-row">
-                                        <Col
-                                            className="contractor-label-col"
-                                            s={3} >
-                                            Email:
-                                        </Col>
-                                        <Col
-                                            className="cost-col"
-                                            s={9} >
-                                            {contactor.email}
-                                        </Col>
-                                    </Row>
-                                    <Row className="contractor-row">
-                                        <Col
-                                            className="contractor-label-col"
-                                            s={3} >
-                                            Company Name:
-                                        </Col>
-                                        <Col
-                                            className="cost-col"
-                                            s={9} >
-                                            {contactor.companyName}
-                                        </Col>
-                                    </Row>
-                                    <Row className="contractor-row">
-                                        <Col
-                                            className="contractor-label-col"
-                                            s={3} >
-                                            Company Address:
-                                        </Col>
-                                        <Col
-                                            className="cost-col"
-                                            s={9} >
-                                            {contactor.companyAddress}
-                                        </Col>
-                                    </Row>
-                                </div>
-                            )
-                        })
+                                            <Col
+                                                className="cost-col"
+                                                s={9} >
+                                                {contactor.company_address}
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                )
+                            }) : null
                     }
                 </div>
             </div>
@@ -301,11 +313,12 @@ class AddContractorTab extends Component {
 }
 
 const mapStateToProps = state => ({
-
+    contractors: state.contractors
 });
 
 const mapDispatchToProps = {
-
+    getAllContractors,
+    createPost
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddContractorTab);
