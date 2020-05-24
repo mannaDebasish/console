@@ -1,17 +1,17 @@
-import { GET_CONTRACTOR, POST_CONTRACTOR, PUT_CONTRACTOR } from './types';
+import { GET_SEALS_PERSON, POST_SEALS_PERSON, PUT_SEALS_PERSON } from './types';
 import { devUrl, header } from '../../config/config';
 
-function getAllContractors() {
+function getAllSealsPersons() {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            fetch(`${devUrl}contractor/all`, {
+            fetch(`${devUrl}saleperson/all`, {
                 method: 'GET',
                 headers: header
             })
                 .then(res => res.json())
                 .then(posts => {
                     dispatch({
-                        type: GET_CONTRACTOR,
+                        type: GET_SEALS_PERSON,
                         payload: posts.docs
                     })
                     resolve(posts.docs)
@@ -21,18 +21,18 @@ function getAllContractors() {
     }
 }
 
-function addNewContractor(contractor) {
+function addNewSealsPerson(salesPerson) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            fetch(`${devUrl}contractor/create`, {
+            fetch(`${devUrl}saleperson/create`, {
                 method: 'POST',
                 headers: header,
-                body: JSON.stringify(contractor)
+                body: JSON.stringify(salesPerson)
             })
                 .then(res => res.json())
                 .then(data => {
                     dispatch({
-                        type: POST_CONTRACTOR,
+                        type: POST_SEALS_PERSON,
                         payload: data
                     })
                     return resolve(data);
@@ -40,18 +40,18 @@ function addNewContractor(contractor) {
         });
     }
 }
-function updateContractor(contractor) {
+function updateSealsPerson(salesPerson) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            fetch(`${devUrl}contractor/update/${contractor._id}/${contractor._rev}`, {
+            fetch(`${devUrl}saleperson/update/${salesPerson._id}/${salesPerson._rev}`, {
                 method: 'PUT',
                 headers: header,
-                body: JSON.stringify(contractor)
+                body: JSON.stringify(salesPerson)
             })
                 .then(res => res.json())
                 .then(data => {
                     dispatch({
-                        type: PUT_CONTRACTOR,
+                        type: PUT_SEALS_PERSON,
                         payload: data
                     })
                     return resolve(data);
@@ -60,4 +60,4 @@ function updateContractor(contractor) {
     }
 }
 
-export { getAllContractors, addNewContractor, updateContractor };
+export { getAllSealsPersons, addNewSealsPerson, updateSealsPerson };

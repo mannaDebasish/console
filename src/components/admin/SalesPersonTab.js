@@ -8,12 +8,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import { ListSubheader } from '@material-ui/core';
-import { getAllContractors, addNewContractor, updateContractor } from '../../actions/contractorAction';
-import ContractorEditModal from '../modals/ContractorEditModal';
+import { getAllSealsPersons, addNewSealsPerson, updateSealsPerson } from '../../actions/salesPersonAction';
+import SealsPersonEditModal from '../modals/SealsPersonEditModal';
 
 const ref = React.createRef();
 
-class AddContractorTab extends Component {
+class SalesPersonTab extends Component {
 
     constructor(props) {
         super(props);
@@ -21,8 +21,8 @@ class AddContractorTab extends Component {
             showAddContactor: false,
             openEditModal: false,
             newContractor: {},
-            contractors: props.contractors.contractors,
-            tempContractors: props.contractors.contractors,
+            contractors: props.contractors.salesPersons,
+            tempContractors: props.contractors.salesPersons,
             selectedContractor: {}
         }
         this.onInputChange = this.onInputChange.bind(this);
@@ -38,7 +38,7 @@ class AddContractorTab extends Component {
         this.getContractors();
     }
     getContractors() {
-        this.props.getAllContractors().then((data) => {
+        this.props.getAllSealsPersons().then((data) => {
             if (data && data.length > 0) {
                 this.setState({ contractors: data });
                 this.setState({ tempContractors: data });
@@ -57,20 +57,20 @@ class AddContractorTab extends Component {
         this.setState({ selectedContractor: Object.assign({}, this.state.selectedContractor, { [name]: value }) })
     }
     onUpdateContractor() {
-        this.props.updateContractor(this.state.selectedContractor).then((data) => {
+        this.props.updateSealsPerson(this.state.selectedContractor).then((data) => {
             this.getContractors();
         });
     }
     // End of Edit Modal functions
 
     addContractor() {
-        if (this.state.newContractor.name && this.state.newContractor.email && this.state.newContractor.phone && this.state.newContractor.company_name && this.state.newContractor.company_address) {
-            this.state.newContractor.type = 'contractor';
+        if (this.state.newContractor.name && this.state.newContractor.email && this.state.newContractor.phone && this.state.newContractor.address) {
+            this.state.newContractor.type = 'saleperson';
             let newList = this.state.contractors.length > 0 ? [this.state.newContractor, ...this.state.contractors] : [this.state.newContractor];
             this.setState({ contractors: newList });
             this.setState({ tempContractors: newList });
             this.setState({ showAddContactor: false });
-            this.props.addNewContractor(this.state.newContractor).then((data) => {
+            this.props.addNewSealsPerson(this.state.newContractor).then((data) => {
                 this.getContractors();
             });
         } else {
@@ -101,10 +101,7 @@ class AddContractorTab extends Component {
             if (item.email.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
-            if (item.company_name.toLowerCase().search(value.toLowerCase()) !== -1) {
-                return item;
-            }
-            if (item.company_address.toLowerCase().search(value.toLowerCase()) !== -1) {
+            if (item.address.toLowerCase().search(value.toLowerCase()) !== -1) {
                 return item;
             }
         });
@@ -119,7 +116,7 @@ class AddContractorTab extends Component {
                     <div className="search-area">
                         <TextInput
                             icon="search"
-                            label="Search Contractors"
+                            label="Search Salesperson"
                             className="search-contractor-input"
                             onChange={this.handleSearchInputChange}
                         />
@@ -135,7 +132,7 @@ class AddContractorTab extends Component {
                             }}
                             waves="light"
                         >
-                            ADD CONTRACTOR
+                            ADD SALESPERSON
                             <Icon left className="add-exp-btn-icon">
                                 <AddIcon />
                             </Icon>
@@ -199,32 +196,15 @@ class AddContractorTab extends Component {
                             <Col
                                 className="contractor-input-label-col"
                                 s={3} >
-                                Company Name:
-                                        </Col>
-                            <Col
-                                className="cost-col"
-                                s={9} >
-                                <TextInput
-                                    placeholder="Company Name"
-                                    name="company_name"
-                                    onChange={this.onInputChange}
-                                    onBlur={this.onInputChange}
-                                />
-                            </Col>
-                        </Row>
-                        <Row className="contractor-input-row">
-                            <Col
-                                className="contractor-input-label-col"
-                                s={3} >
-                                Company Address:
+                                Address:
                                         </Col>
                             <Col
                                 className="cost-col"
                                 s={9} >
                                 <Textarea
-                                    placeholder="Company Address"
-                                    name="company_address"
-                                    id="company_addressTextarea"
+                                    placeholder="Address"
+                                    name="address"
+                                    id="addressTextarea"
                                     onChange={this.onInputChange}
                                     onBlur={this.onInputChange}
                                 />
@@ -240,7 +220,7 @@ class AddContractorTab extends Component {
                                 }}
                                 waves="light"
                             >
-                                ADD CONTRACTOR
+                                ADD SALESPERSON
                             <Icon left className="add-exp-btn-icon">
                                     <AddIcon />
                                 </Icon>
@@ -255,7 +235,7 @@ class AddContractorTab extends Component {
                                 return (
                                     <div className="contactor-item" key={index}>
                                         <div className="item-edit-lint" onClick={() => this.onSelectContractor(contactor)}>
-                                            <ContractorEditModal index={index} contractor={selectedContractor}
+                                            <SealsPersonEditModal index={index} contractor={selectedContractor}
                                                 updateSelectedContractor={this.updateSelectedContractor}
                                                 onUpdateContractor={this.onUpdateContractor} />
                                         </div>
@@ -311,24 +291,12 @@ class AddContractorTab extends Component {
                                             <Col
                                                 className="contractor-label-col"
                                                 s={3} >
-                                                Company Name:
+                                                Address:
                                         </Col>
                                             <Col
                                                 className="cost-col"
                                                 s={9} >
-                                                {contactor.company_name}
-                                            </Col>
-                                        </Row>
-                                        <Row className="contractor-row">
-                                            <Col
-                                                className="contractor-label-col"
-                                                s={3} >
-                                                Company Address:
-                                        </Col>
-                                            <Col
-                                                className="cost-col"
-                                                s={9} >
-                                                {contactor.company_address}
+                                                {contactor.address}
                                             </Col>
                                         </Row>
                                     </div>
@@ -342,13 +310,13 @@ class AddContractorTab extends Component {
 }
 
 const mapStateToProps = state => ({
-    contractors: state.contractors
+    contractors: state.salesPersons
 });
 
 const mapDispatchToProps = {
-    getAllContractors,
-    addNewContractor,
-    updateContractor
+    getAllSealsPersons,
+    addNewSealsPerson,
+    updateSealsPerson
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddContractorTab);
+export default connect(mapStateToProps, mapDispatchToProps)(SalesPersonTab);

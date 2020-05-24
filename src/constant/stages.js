@@ -14,7 +14,12 @@ export const stages = [
 
 export const adminTab = [
     'PAY EXPENSES',
-    'ADD NEW CONTRACTOR'
+    'MANAGE CONTRACTOR',
+    'MANAGE CUSTOMER',
+    'MANAGE SALES PERSON',
+    'MANAGE INSURANCE COMPANY',
+    'ADD NEW JOB',
+
 ];
 
 export const i18n = {

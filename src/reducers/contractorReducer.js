@@ -1,7 +1,8 @@
-import { GET_CONTRACTOR, POST_CONTRACTOR } from '../actions/types';
+import { GET_CONTRACTOR, POST_CONTRACTOR, PUT_CONTRACTOR } from '../actions/types';
 
 const initialState = {
-  contractors: []
+  contractors: [],
+  contractor: {}
 }
 
 export default function (state = initialState, action) {
@@ -13,7 +14,16 @@ export default function (state = initialState, action) {
       }
       break;
     case POST_CONTRACTOR:
-      return action.payload
+      return {
+        ...state,
+        contractor: { ...action.payload }
+      }
+      break;
+    case PUT_CONTRACTOR:
+      return {
+        ...state,
+        contractor: { ...action.payload }
+      }
       break;
     default:
       return state;

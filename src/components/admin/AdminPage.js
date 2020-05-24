@@ -10,7 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { adminTab } from '../../constant/stages';
 import Header from '../header/Header';
-import AddContractorTab from './AddContractorTab'
+import AddContractorTab from './AddContractorTab';
+import CustomerTab from './CustomerTab';
+import SalesPersonTab from './SalesPersonTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -86,6 +88,18 @@ function AdminPage() {
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         <AddContractorTab />
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        <CustomerTab />
+                    </TabPanel>
+                    <TabPanel value={value} index={3}>
+                        <SalesPersonTab />
+                    </TabPanel>
+                    <TabPanel value={value} index={4}>
+                        INSURANCE COMPANY
+                    </TabPanel>
+                    <TabPanel value={value} index={5}>
+                        NEW JOB
                     </TabPanel>
                 </div>
             </div>
