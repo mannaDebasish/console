@@ -13,6 +13,7 @@ import Header from '../header/Header';
 import AddContractorTab from './AddContractorTab';
 import CustomerTab from './CustomerTab';
 import SalesPersonTab from './SalesPersonTab';
+import InsuranceCompaniesTab from './InsuranceCompaniesTab';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -96,7 +97,7 @@ function AdminPage() {
                         <SalesPersonTab />
                     </TabPanel>
                     <TabPanel value={value} index={4}>
-                        INSURANCE COMPANY
+                        <InsuranceCompaniesTab />
                     </TabPanel>
                     <TabPanel value={value} index={5}>
                         NEW JOB
