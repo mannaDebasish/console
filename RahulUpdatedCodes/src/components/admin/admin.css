@@ -1,0 +1,73 @@
+/* Tab custom design */
+
+.admin-tab-container {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 75px;
+}
+.tab-links {
+    box-shadow: 0 0 10px #e5e5e5;
+    width: 300px;
+}
+.tab-contents {
+    box-shadow: 0 0 10px #e5e5e5;
+    margin-left: 10px;
+    width: 86%;
+    padding-bottom: 50px;
+}
+
+/* =================Contractor Tab========== */
+.cost-col{
+    display: inline-flex;
+    margin-top: 18px;
+}
+.cost-col > span {
+        margin-top: 14px;
+        font-size: 17px;
+}
+.cost-col > .input-field{
+    width: 97%;
+    margin: 0;
+}
+.contractor-row{
+    margin-bottom: 5px !important;
+    width: 95%;
+    margin-left: 0px !important;
+}
+.contractor-label-col {
+    font-size: 15px;
+    margin-top: 20px;
+}
+.contactor-item {
+    box-shadow: 0 0 10px #e5e5e5;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.add-btn-area {
+    text-align: right;
+    margin-bottom: 20px;
+}
+.contractor-input-row{
+    margin-bottom: 5px !important;
+    width: 95%;
+    margin-left: 0px !important;
+}
+.contractor-input-label-col{
+    font-size: 15px;
+    margin-top: 34px;
+}
+.item-edit-lint {
+    position: absolute;
+    right: 80px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+    cursor: pointer;
+}
+.item-edit-lint > div > button{
+    color: #26a69a !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important  ;
+}

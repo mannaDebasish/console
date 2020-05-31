@@ -1,0 +1,26 @@
+.modal-style > div {
+    padding: 0;
+    border: none;
+}
+.modal-header > h2 {
+    margin: 0;
+    background: #e5e5e5;
+    text-align: center;
+    font-size: 25px;
+    padding: 18px;
+}
+.modal-footer {
+    padding: 20px;
+    text-align: right;
+}
+.close-modal {
+    width: 50px;
+    text-align: center;
+    padding-top: 14px;
+    float: right;
+    margin-top: -58px;
+    cursor: pointer;
+}
+.modal-body > .contractor-row > .contractor-label-col {
+    margin-top: 37px !important;
+}

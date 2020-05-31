@@ -1,0 +1,149 @@
+/* Job Page */
+
+.job-page {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* job search */
+
+.job-search {
+    width: 70%;
+    margin: 90px auto 30px;
+    padding-top: 10px;
+    box-shadow: 0 0 10px #e5e5e5;
+    padding: 20px;
+}
+.job-item {
+    padding: 0px 20px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.job-item h4 {
+    font-size: 17px;
+    margin-top: 13px;
+}
+.complete-job {
+    border-left: 3px solid green;
+}
+.progress-job {
+    border-left: 3px solid #1976D2;
+}
+.incomplete-job {
+    border-left: 3px solid red;
+}
+
+/* JOB Header */
+
+.job-header {
+    box-shadow: 0 0 10px #e5e5e5;
+    padding-bottom: 10px;
+    width: 95%;
+    margin: 90px auto 30px;
+}
+.user-name {
+    border-bottom: 2px solid #26A69A;
+    padding: 20px 10px 10px;
+}
+.user-name > h3 {
+    font-size: 25px;
+    margin-top: 0px;
+}
+
+/* Tab custom design */
+
+.tab-container {
+    width: 95%;
+    margin: 0 auto;
+}
+.tab-links {
+    box-shadow: 0 0 10px #e5e5e5;
+    width: 300px;
+}
+.tab-contents {
+    box-shadow: 0 0 10px #e5e5e5;
+    margin-left: 10px;
+    width: 86%;
+    padding-bottom: 50px;
+}
+
+/* ================== Estimate ============= */
+.confirm-button {
+    position: absolute !important;
+    right: 235px;
+    margin-top: -48px;
+}
+.pdf-button{
+    float: right;
+    margin-top: -50px;
+}
+.label-col{
+    margin-top: 23px;
+    font-size: 16px;
+}
+.cost-col{
+    display: inline-flex;
+}
+.cost-col > span {
+        margin-top: 14px;
+        font-size: 17px;
+}
+.cost-col > .input-field{
+    width: 97%;
+    margin: 0;
+}
+
+/* ==================== Expenses ================ */
+.add-exp-btn-icon {
+    margin-top: 3px;
+    margin-right: 9px !important;
+}
+.expanse-btn-list {
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: -60px;
+    margin-right: -6px;
+}
+.delete-expense {
+    text-align: right;
+    width: 50px;
+    float: right;
+    padding: 7px 0px;
+    cursor: pointer;
+}
+
+.delete-expense > svg {
+    color: #F24C3D;
+    width: 50px;
+    height: 30px;    
+}
+.expense-item {
+    box-shadow: 0 0 10px #e5e5e5;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.expenses-head {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.expense-row{
+    margin-bottom: 5px !important;
+    width: 95%;
+    margin-left: 0px !important;
+}
+.expense-label-col {
+    font-size: 15px;
+    margin-top: 20px;
+}
+/* ============= Claim Insurance ============ */
+.file-ins-head {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.save-file-ins-button {
+    float: right;
+}

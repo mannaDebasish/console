@@ -1,0 +1,58 @@
+{
+    "jobdetails": [
+        {
+            "_id": "id1",
+            "jobName": "name1",
+            "cust": {
+                "id": "custid1",
+                "name": "custname"
+            },
+            "status": "complete",
+            "assingTo": "agentname",
+            "state": {
+                "ica": {
+                    "signed": null
+                },
+                "estimate": {
+                    "name": "name1"
+                }
+            }
+        },
+        {
+            "_id": "id2",
+            "jobName": "name2",
+            "cust": {
+                "id": "custid2",
+                "name": "custname"
+            },
+            "status": "incomplete",
+            "assingTo": "agentname",
+            "state": {
+                "ica": {
+                    "signed": null
+                },
+                "estimate": {
+                    "name": "name1"
+                }
+            }
+        },
+        {
+            "_id": "id3",
+            "jobName": "name3",
+            "cust": {
+                "id": "custid1",
+                "name": "custname"
+            },
+            "status": "complete",
+            "assingTo": "agentname",
+            "state": {
+                "ica": {
+                    "signed": null
+                },
+                "estimate": {
+                    "name": "name1"
+                }
+            }
+        }
+    ]
+}
