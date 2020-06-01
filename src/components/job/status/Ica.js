@@ -55,17 +55,20 @@ const ICA = (props) => {
     }
 
     const classes = useStyles();
+    console.log('refs = ', ref)
+
     return (
         <div className="ica">
             {ica.signed === undefined || ica.signed === null ?
                 <div className={classes.buttonWrapper}> <Button variant="contained" color="secondary" className={classes.button} onClick={showFormField}>
-                    Genarate
+                    Generate
                     <AddIcon />
                 </Button></div> : null}
             {
                 isForm ?
                     <form noValidate autoComplete="off" ref={ref}>
-                        <div>
+                        
+                        <div contentEditable>
                             <p>Customer agrees to the following:</p>
 
                             <p>Allow Forward Exteriors to correspond with Customer’s insurance company regarding applicable policies and claims.
@@ -82,7 +85,7 @@ const ICA = (props) => {
                                     className="label-col"
                                     s={4} >
                                     <TextField className={classes.input} required id="standard-basic" label="Customer Name" fullWidth
-                                        onChange={handleNameChange} />
+                                         value={props.cname} onChange={handleNameChange} />
                                 </Col>
                                 <Col
                                     className="label-col"
@@ -116,7 +119,8 @@ const ICA = (props) => {
 }
 
 const mapStateToProps = state => ({
-    ica: state.job.state.ica
+    ica: state.job.state.ica,
+    cname: state.job.cust.name
 });
 
 const mapDispatchToProps = {
