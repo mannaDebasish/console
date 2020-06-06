@@ -13,6 +13,10 @@ import JobPage from './JobPage';
 import { ListSubheader } from '@material-ui/core';
 import Pdf from "react-to-pdf";
 import blue from '@material-ui/core/colors/blue';
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 const ref = React.createRef();
 
@@ -56,8 +60,7 @@ class ExpensesTab extends Component {
     }
 
     componentWillMount() {
-        console.log('expenses', this.state.expenses);
-        console.log('expenses  length', this.state.expenses.length);
+        
         this.setState({
             disableExpenseDetails: new Array(this.state.expenses.length).fill(true),
             toggleSaveEditCancel: new Array(this.state.expenses.length).fill(true)
@@ -90,6 +93,7 @@ class ExpensesTab extends Component {
     saveExpense = (index) => () => {
         this.setState({ 
             disableExpenseDetails: Object.assign({}, this.state.disableExpenseDetails, { [index]: true }),
+            toggleSaveEditCancel: Object.assign({}, this.state.toggleSaveEditCancel, { [index]: true }),
             disableCreateExpenseButton: false 
         })
 
@@ -111,27 +115,23 @@ class ExpensesTab extends Component {
         expenses[index].completionDate = '';
         expenses[index].paidDate = '';
         expenses[index].note = ''
-        console.log('cancelExpense ', expenses );
         this.setState({
-            expenses
+            expenses,
+            toggleSaveEditCancel: Object.assign({}, this.state.toggleSaveEditCancel, { [index]: true }),
+            disableCreateExpenseButton: false
         })
 
     }
 
     onInputChange(e) {
         const { name, value, id } = e.target;
-        console.log('name = ', name, 'value = ', value, 'id = ', id);
         var expenses = this.state.expenses.slice();
-        console.log('shallow expenses = ', expenses[id][name]);
         expenses[id][name] = value;
         this.setState({ expenses });
-        console.log('expenses = ', this.state.expenses);      
     }
 
     render() {
         const { expenses, showSaveButton, contractors } = this.state;
-        console.log('expenses', expenses);
-        console.log('disableExpenseDetails = ', this.state.disableExpenseDetails);
         return (
             <div className="expense-tab">
                 <div className="expenses-head">Expenses</div>
@@ -159,12 +159,16 @@ class ExpensesTab extends Component {
                                 <div className="expense-item" key={index}>
                                     {
                                         this.state.toggleSaveEditCancel[index] ?                                 
-                                        <div className="edit-expense">
-                                            <EditIcon style={{ color: blue[500] }} onClick={this.editExpense(index)}/>                                            
+                                        <div className="edit-expense">                                        
+                                            <FontAwesomeIcon icon={faEdit} size= '2x' style={{ color: blue[500] }} onClick={this.editExpense(index)} title="Edit"/>
                                         </div> : 
                                         <div className="save-edit-expense">
-                                            <SaveIcon style={{ color: blue[500] }} onClick={this.saveExpense(index)}/>
-                                            <CancelIcon color="primary" onClick={this.cancelExpense(index)}/>
+                                            <Tooltip title="Save">
+                                                <SaveIcon fontSize='2px' style={{ color: blue[500] }} onClick={this.saveExpense(index)}/>
+                                            </Tooltip>
+                                            <Tooltip title="Cancel">
+                                                <CancelIcon color="primary" onClick={this.cancelExpense(index)}/>
+                                            </Tooltip>
                                         </div>
                                     }
                                     <Row className="expense-row">
@@ -410,3 +414,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTab);
+
+
+// <EditIcon style={{ color: blue[500] }} onClick={this.editExpense(index)}/> 

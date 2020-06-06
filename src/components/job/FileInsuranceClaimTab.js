@@ -26,14 +26,12 @@ class FileInsuranceClaimTab extends Component {
             claimStatus: ''
         }
         this.onInputChange = this.onInputChange.bind(this);
-        //this.onFileDateChange = this.onFileDateChange.bind(this);
         this.claimInsurance = this.claimInsurance.bind(this);
 
     }
 
     claimInsurance() {
         this.setState({ claimFiled: new Date().toLocaleString() });
-        console.log(this.state.claimFiled);
     }
 
     /*onFileDateChange(e) {
@@ -47,7 +45,6 @@ class FileInsuranceClaimTab extends Component {
 
     render() {
         const { insurance, claimFiled, salesPerson } = this.state;
-        console.log('claimFiled', claimFiled);
         return (
             <div className="file-ins-tab">
                 {
