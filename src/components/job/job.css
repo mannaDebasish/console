@@ -112,11 +112,41 @@
     padding: 7px 0px;
     cursor: pointer;
 }
+
 .delete-expense > svg {
     color: #F24C3D;
     width: 50px;
     height: 30px;    
 }
+
+.edit-expense {
+    text-align: right;
+    width: 50px;
+    float: right;
+    padding: 7px 0px;
+    cursor: pointer;
+}
+
+.edit-expense > svg {
+    color: #F24C3D;
+    width: 50px;
+    height: 30px;    
+}
+
+.save-edit-expense {
+    text-align: right;
+    width: 50px;
+    float: right;
+    padding: 7px 0px;
+    cursor: pointer;
+}
+
+.save-edit-expense > svg {
+    color: #F24C3D;
+    width: 50px;
+    height: 30px;    
+}
+
 .expense-item {
     box-shadow: 0 0 10px #e5e5e5;
     padding: 10px;
@@ -143,6 +173,15 @@
     font-weight: 500;
     margin-bottom: 20px;
 }
-.save-file-ins-button {
+.claim-status-button {
     float: right;
+}
+
+.mark-file-ins-button {
+    float: right;
+}
+
+.claim-status-button {
+    float: right;
+    cursor: default;   
 }

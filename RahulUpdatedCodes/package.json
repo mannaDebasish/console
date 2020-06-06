@@ -1,0 +1,48 @@
+{
+  "name": "react-webpack-starter",
+  "version": "1.0.0",
+  "description": "A react & webpack boilerplate",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:MudOnTire/react-webpack-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.11",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.50",
+    "bootstrap": "^4.4.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.25.3",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.8.6",
+    "react-materialize": "^3.8.10",
+    "react-redux": "^7.0.3",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-to-pdf": "0.0.11",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  }
+}

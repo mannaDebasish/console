@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css';
 import './job.css';
 import { i18n } from '../../constant/stages';
-import { Row, Col, TextInput, Textarea, Icon, Button, DatePicker, Select } from 'react-materialize';
+import { Row, Col, TextInput, Textarea, Icon, Button, DatePicker, Select, Badge } from 'react-materialize';
 import moment from 'moment';
 
 class FileInsuranceClaimTab extends Component {
@@ -11,7 +11,7 @@ class FileInsuranceClaimTab extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isClaimed: false,
+            claimFiled: false,
             insurance:
             {
 
@@ -22,21 +22,21 @@ class FileInsuranceClaimTab extends Component {
                 { name: 'Sales person 3', id: 'Sales person 3' },
                 { name: 'Sales person 4', id: 'Sales person 4' },
                 { name: 'Sales person 5', id: 'Sales person 5' }
-            ]
+            ],
+            claimStatus: ''
         }
         this.onInputChange = this.onInputChange.bind(this);
-        this.onFileDateChange = this.onFileDateChange.bind(this);
         this.claimInsurance = this.claimInsurance.bind(this);
 
     }
 
     claimInsurance() {
-        this.setState({ isClaimed: true });
+        this.setState({ claimFiled: new Date().toLocaleString() });
     }
 
-    onFileDateChange(e) {
+    /*onFileDateChange(e) {
         this.setState({ insurance: Object.assign({}, this.state.insurance, { claimFileDate: moment(e).format("MMM Do YY") }) });
-    }
+    }*/
 
     onInputChange(e) {
         const { name, value } = e.target;
@@ -44,24 +44,25 @@ class FileInsuranceClaimTab extends Component {
     }
 
     render() {
-        const { insurance, isClaimed, salesPerson } = this.state;
+        const { insurance, claimFiled, salesPerson } = this.state;
         return (
             <div className="file-ins-tab">
                 {
-                    isClaimed ?
-                        <div className="file-ins-head">Claimed insurance details</div>
+                    claimFiled ?
+                        <div className="file-ins-head">
+                            Claimed insurance details
+                        </div>
                         : <div className="file-ins-head">
                             Claim insurance
                             <Button
-                                className="save-file-ins-button"
+                                className="claim-status-button"
                                 node="button"
-                                onClick={this.claimInsurance}
                                 style={{
                                     marginRight: '5px'
                                 }}
                                 waves="light"
                             >
-                                SAVE
+                                CLAIM YET TO BE FILED
                             </Button>
                         </div>
                 }
@@ -81,7 +82,7 @@ class FileInsuranceClaimTab extends Component {
                                 name="salesPerson"
                                 multiple={false}
                                 onChange={this.onInputChange}
-                                disabled={isClaimed}
+                                disabled={claimFiled}
                                 options={{
                                     classes: '',
                                     dropdownOptions: {
@@ -125,7 +126,7 @@ class FileInsuranceClaimTab extends Component {
                                 name="carrier"
                                 value={insurance.carrier ? insurance.carrier : ''}
                                 onChange={this.onInputChange}
-                                disabled={isClaimed}
+                                disabled={claimFiled}
                             />
                         </Col>
                     </Row>
@@ -140,10 +141,10 @@ class FileInsuranceClaimTab extends Component {
                             s={9} >
                             <DatePicker
                                 name="claimFileDate"
-                                onChange={this.onFileDateChange}
+                                //onChange={this.onFileDateChange}
                                 placeholder="Claim File Date"
-                                value={insurance.claimFileDate ? insurance.claimFileDate : ""}
-                                disabled={isClaimed}
+                                value={moment(new Date()).format("MMM Do YY")}
+                                disabled={true}
                                 options={{
                                     autoClose: false,
                                     container: null,
@@ -187,10 +188,35 @@ class FileInsuranceClaimTab extends Component {
                                 name="claimNumber"
                                 value={insurance.claimNumber ? insurance.claimNumber : ''}
                                 onChange={this.onInputChange}
-                                disabled={isClaimed}
+                                disabled={claimFiled}
                             />
                         </Col>
                     </Row>
+                </div>
+                <div className="file-ins-head">
+                    {   claimFiled ?
+                        <Button
+                            className="mark-file-ins-button"
+                            node="button"
+                            style={{
+                                marginRight: '5px'
+                            }}
+                            waves="light"
+                        >
+                            CLAIM INSURANCE COMPLETED
+                        </Button> : 
+                        <Button
+                            className="mark-file-ins-button"
+                            node="button"
+                            onClick={this.claimInsurance}
+                            style={{
+                                marginRight: '5px'
+                            }}
+                            waves="light"
+                        >
+                            MARK INSURANCE CLAIM AS COMPLETE
+                        </Button>                        
+                    }
                 </div>
             </div>
         )
