@@ -1,0 +1,23 @@
+export const FETCH_JOB = 'FETCH_JOB'
+export const NEW_POST = 'NEW_POST'
+
+export const GET_CONTRACTOR = 'GET_CONTRACTOR'
+export const POST_CONTRACTOR = 'POST_CONTRACTOR'
+export const UPDATE_CONTRACTOR = 'UPDATE_CONTRACTOR'
+
+export const GET_CUSTOMER = 'GET_CUSTOMER'
+export const POST_CUSTOMER = 'POST_CUSTOMER'
+export const UPDATE_CUSTOMER = 'UPDATE_CUSTOMER'
+
+export const GET_SALESMAN = 'GET_SALESMAN'
+export const POST_SALESMAN = 'POST_SALESMAN'
+export const UPDATE_SALESMAN = 'UPDATE_SALESMAN'
+
+export const GET_INSURER = 'GET_INSURER'
+export const POST_INSURER = 'POST_INSURER'
+export const UPDATE_INSURER = 'UPDATE_INSURER'
+
+export const GET_JOB = 'GET_JOB'
+export const POST_JOB = 'POST_JOB'
+export const GET_JOB_BY_ID = 'GET_JOB_BY_ID'
+export const UPDATE_JOB = 'UPDATE_JOB'

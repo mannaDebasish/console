@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react",
+        "resolveJsonModule": true,
+        "extendedDiagnostics": true,
+        "experimentalDecorators": true,
+        "declaration": false,
+        "noImplicitReturns": true,
+        "noImplicitAny": false,
+        "lib": [
+            "dom",
+            "es2015",
+            "es2015.promise",
+            "esnext",
+            "esnext.asynciterable"
+	]
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "excluded": ["**/*.wasm", "./src/test.pdf"],
+    "moduleResolution": "node"
+}

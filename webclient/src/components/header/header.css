@@ -1,0 +1,31 @@
+.header {
+    background: #26A69A;
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 15px;
+    z-index: 9999;
+}
+.left-link {
+    width: 100px;
+    float: left;
+    display: inline-flex;
+}
+.left-link > svg {
+    font-size: 30px;
+}
+.right-link {
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+.header-menu {
+    margin-left: 20px;
+    display: inline-flex;
+}
+.menu-item {
+    width: 65px;
+    text-align: center;
+    cursor: pointer;
+}

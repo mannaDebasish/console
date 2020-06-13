@@ -1,0 +1,31 @@
+.user-login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 320px;
+    margin-top: -9em;
+    margin-left: -15em;
+    box-shadow: 0 0 10px #e5e5e5;
+    padding: 20px;
+}
+.user-login h4 {
+    margin-bottom: 28px;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 25px;
+}
+.alert-toast {
+    position: fixed;
+    right: 30px;
+    top: 30px;
+}
+.user-login > p {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+    border-radius: 50%;
+    padding-left: 7px;
+    padding-top: 7px;
+    background-color: #f50057;
+}
