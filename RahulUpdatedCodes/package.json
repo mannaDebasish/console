@@ -19,7 +19,7 @@
     "@material-ui/lab": "^4.0.0-alpha.50",
     "bootstrap": "^4.4.1",
     "materialize-css": "^1.0.0-rc.2",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.8.6",
