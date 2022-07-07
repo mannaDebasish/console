@@ -27,7 +27,7 @@
     "isomorphic-textencoder": "^1.0.1",
     "jspdf": "^1.5.3",
     "materialize-css": "^1.0.0-rc.2",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "pdfjs-dist": "^2.3.200",
     "pluralize": "^8.0.0",
     "react": "^16.9.0",
